@@ -15,7 +15,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 bootJar {
-    archiveFileName='Connect-monitor-1.0.0.jar'
+    archiveFileName='kafka-connect-monitor-1.0.0.jar'
 }
 
 repositories {
