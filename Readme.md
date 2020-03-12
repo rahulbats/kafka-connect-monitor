@@ -1,4 +1,4 @@
-#Welcome to Kafka-Connect-Monitor(KCM)
+# Welcome to Kafka-Connect-Monitor(KCM)
 Kafka connect is an awesome way to integrate your source and sink apps to Kafka. 
 
 But Kafka connect does not provide any proactive alerting in case your connect task dies due to external failure.
