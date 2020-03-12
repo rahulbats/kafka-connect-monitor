@@ -19,7 +19,7 @@ You can run KCM in two ways
     * run the docker container using this command `docker run -e CONNECT_URL=[CONNECT URL] -e SMTP_HOST=[SMTP HOST] -e SMTP_PORT=[SMTP PORT] -e SMTP_TO=[TO ADDRESS] -e SMTP_FROM=[FROM ADDRESS] -e ROOT_URL=http://localhost:8080  -p 8080:8080  rahulbats/kafka-connect-monitor:LATEST_TAG`
 
 ### List of environment variables
-#### Table below describes the environment variables. Refer the [application.properties file](server/src/main/resources/application.properties) on how these are used.
+#### Table below describes the environment variables. Refer the [application.properties file](src/main/resources/application.properties) on how these are used.
 | Environment Variable | Optional | Description |
 | --- | --- | --- |
 | CONNECT_URL | No | URL of the connect cluster |
