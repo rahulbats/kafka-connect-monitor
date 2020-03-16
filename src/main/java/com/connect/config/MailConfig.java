@@ -16,7 +16,7 @@ public class MailConfig {
     @Value("${smtp.port}")
     private int smtpPort;
 
-    @Value("${smtp.auth}")
+    @Value("${smtp.auth:false}")
     private boolean smtpAuth;
 
     @Value("${smtp.username}")
