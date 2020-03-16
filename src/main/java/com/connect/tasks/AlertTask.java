@@ -36,8 +36,13 @@ public class AlertTask {
     @Value("${smtp.from}")
     private String smtpFrom;
 
+
+
     @Value("${root.url}")
     private String rootURL;
+
+    @Value("${environment}")
+    private String environment;
 
     @Autowired
     ConnectorsService connectorsService;
@@ -51,10 +56,10 @@ public class AlertTask {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(smtpTo);
         message.setFrom(smtpFrom);
-        message.setSubject("Alert on "+connectURL+" for states "+states);
+        message.setSubject(environment+ " Alert for states "+states);
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
-        message.setText(mapper.writeValueAsString(connectorContainer.getConnectors())+"\n\n"+rootURL+"/connectors/state/"+states);
+        message.setText(mapper.writeValueAsString(connectorContainer.getConnectors())+"\n\n"+rootURL+"/connectors/state/"+states+"\n\n"+rootURL+"/swagger-ui.html#/connector-controller");
 
         mailSender.send(message);
     }
