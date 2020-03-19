@@ -53,14 +53,17 @@ public class AlertTask {
     @Scheduled(fixedRateString = "${frequency}")
     public void submitAlert() throws JsonProcessingException {
         ConnectorContainer connectorContainer = connectorsService.getConnectorForState(states);
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(smtpTo);
-        message.setFrom(smtpFrom);
-        message.setSubject(environment+ " Alert for states "+states);
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
-        message.setText(mapper.writeValueAsString(connectorContainer.getConnectors())+"\n\n"+rootURL+"/connectors/state/"+states+"\n\n"+rootURL+"/swagger-ui.html#/connector-controller");
+        if(connectorContainer.getStates().length()>0) {
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setTo(smtpTo);
+            message.setFrom(smtpFrom);
+            message.setSubject(environment+ " Alert for states "+states);
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+            message.setText(mapper.writeValueAsString(connectorContainer.getConnectors())+"\n\n"+rootURL+"/connectors/state/"+states+"\n\n"+rootURL+"/swagger-ui.html#/connector-controller");
 
-        mailSender.send(message);
+            mailSender.send(message);
+        }
+
     }
 }
