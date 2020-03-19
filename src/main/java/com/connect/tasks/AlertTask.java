@@ -53,7 +53,7 @@ public class AlertTask {
     @Scheduled(fixedRateString = "${frequency}")
     public void submitAlert() throws JsonProcessingException {
         ConnectorContainer connectorContainer = connectorsService.getConnectorForState(states);
-        if(connectorContainer.getStates().length()>0) {
+        if(connectorContainer.getConnectors().size()>0) {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(smtpTo);
             message.setFrom(smtpFrom);
