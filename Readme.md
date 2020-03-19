@@ -7,6 +7,7 @@ KCM is a tool which monitors your Kafka connect cluster for any tasks which go d
 
 You can configure KCM to send out the alerts for states (RUNNING, PAUSED or FAILED) that you are interested in.
 
+KCM also has a api with swagger documentation page which can be accsed at  http://localhost:8080/swagger-ui.html#/connector-controller
 
 ### How to run?
 You can run KCM in two ways
