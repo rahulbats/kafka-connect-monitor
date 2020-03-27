@@ -27,7 +27,12 @@ You can run KCM in two ways
 | SMTP_HOST | No | SMTP host |
 | SMTP_PORT | No | SMTP port |
 | SMTP_TO | No | To email address |
+| SMTP_AUTH | Yes | SMTP auth enabled, default false |
+| SMTP_USERNAME | Yes | SMTP username if auth is enabled |
+| SMTP_PASSWORD | Yes | SMTP password if auth is enabled |
 | ROOT_URL | Yes | URL of this app so that links from email direct to the status page |
 | FREQUENCY | Yes | Frequency in milliseconds of alerts. Default is 300000 (5 minutes) |
+| ENVIRONMENT | Yes | Environment name which will be included in the email subject, default DEV |
+| ROOT_URL | Yes | Root URL of the KCM server for the APIs. Default http://localhost:8080 |
 
   

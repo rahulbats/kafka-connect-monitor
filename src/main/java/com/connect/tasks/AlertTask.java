@@ -52,6 +52,7 @@ public class AlertTask {
 
     @Scheduled(fixedRateString = "${frequency}")
     public void submitAlert() throws JsonProcessingException {
+        logger.info("Looking for connectors in states "+states);
         ConnectorContainer connectorContainer = connectorsService.getConnectorForState(states);
         if(connectorContainer.getConnectors().size()>0) {
             SimpleMailMessage message = new SimpleMailMessage();
@@ -60,8 +61,9 @@ public class AlertTask {
             message.setSubject(environment+ " Alert for states "+states);
             ObjectMapper mapper = new ObjectMapper();
             mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
-            message.setText(mapper.writeValueAsString(connectorContainer.getConnectors())+"\n\n"+rootURL+"/connectors/state/"+states+"\n\n"+rootURL+"/swagger-ui.html#/connector-controller");
-
+            String messageText = mapper.writeValueAsString(connectorContainer.getConnectors())+"\n\n"+rootURL+"/connectors/state/"+states+"\n\n"+rootURL+"/swagger-ui.html#/connector-controller";
+            message.setText(messageText);
+            logger.info("Alert sent with body "+messageText);
             mailSender.send(message);
         }
 
