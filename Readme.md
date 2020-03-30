@@ -10,7 +10,7 @@ Every time it polls the connectors api, it stores the results in JMX metrics, wh
 Refer the [kcm.yml file](kcm.yml) for a sample on how to extract the JMX metrics to be consumed by Prometheus.
 
 For connector status MBean is exposed with object `com.connect:type=status` and has attributes `state` and `workerId`.
-![Connector status jmx screenshot](connector-status-jmx.png){:height="50%" width="50%"}
+![Connector status jmx screenshot](connector-status-jmx.png)
 
 
 For connector task status MBean is exposed with object `com.connect.task:type=status` and has attributes `id`, `sate`, `trace` and `workerId`.
