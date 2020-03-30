@@ -15,6 +15,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import javax.management.openmbean.OpenDataException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -51,10 +52,11 @@ public class AlertTask {
     JavaMailSender mailSender;
 
     @Scheduled(fixedRateString = "${frequency}")
-    public void submitAlert() throws JsonProcessingException {
+    public void submitAlert() throws JsonProcessingException, OpenDataException {
         logger.info("Looking for connectors in states "+states);
         ConnectorContainer connectorContainer = connectorsService.getConnectorForState(states);
         if(connectorContainer.getConnectors().size()>0) {
+
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(smtpTo);
             message.setFrom(smtpFrom);

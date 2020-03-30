@@ -1,0 +1,32 @@
+ssl: false
+lowercaseOutputName: false
+lowercaseOutputLabelNames: false
+whitelistObjectNames: ["com.connect:*", "com.connect.task:*"]
+rules:
+    - pattern: "com.connect<type=status, name=([^:]+)><>State: ([^:]+)"
+      name: "com_connect_connector_status"
+      value: 1
+      labels:
+        connector: $1
+        status: $2
+    - pattern: "com.connect.task<type=status, connector=([^:]+), task=([^:]+)><>State: ([^:]+)"
+      name: "com_connect_connector_task_status"
+      value: 1
+      labels:
+        connector: $1
+        task: $2
+        status: $3
+    - pattern: "com.connect.task<type=status, connector=([^:]+), task=([^:]+)><>WorkerId: ([^:]+)"
+      name: "com_connect_connector_task_workerid"
+      value: 1
+      labels:
+        connector: $1
+        task: $2
+        workerid: $3
+    - pattern: "com.connect.task<type=status, connector=([^:]+), task=([^:]+)><>Trace: ([^:]+)"
+      name: "com_connect_connector_task_trace"
+      value: 1
+      labels:
+        connector: $1
+        task: $2
+        trace: $3

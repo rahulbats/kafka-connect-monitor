@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.management.openmbean.OpenDataException;
 import java.util.List;
 
 @RestController
@@ -32,7 +33,7 @@ public class ConnectorController {
 
     @ApiOperation(value = "Search for connectors matching the state. ", response = Connector.class)
     @GetMapping(path ="/connectors/state/{states}", produces = "application/json")
-    public ConnectorContainer getConnectorsForState(@ApiParam(name = "states", value = "The state can be one of the states FAILED, RUNNING or PAUSED. You can pass multiple states coma seperated.", required = true, defaultValue = "FAILED")  @PathVariable String states){
+    public ConnectorContainer getConnectorsForState(@ApiParam(name = "states", value = "The state can be one of the states FAILED, RUNNING or PAUSED. You can pass multiple states coma seperated.", required = true, defaultValue = "FAILED")  @PathVariable String states) throws OpenDataException {
         return connectorsService.getConnectorForState(states);
     }
 }
