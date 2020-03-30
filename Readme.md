@@ -29,7 +29,7 @@ You can run KCM in two ways
 * Build your jar 
   * Build jar using `./gradlew clean build`
   * Export environment variables
-  * Run jar using `java -jar  build/libs/kafka-connect-monitor-1.0.0.jar `. To use with prometheus using [jmx-exporter](https://github.com/prometheus/jmx_exporter) run like this java -javaagent:../jmx_prometheus_javaagent-0.12.0.jar=8081:kcm.yml -jar build/libs/kafka-connect-monitor-1.0.0.jar
+  * Run jar using `java -jar  build/libs/kafka-connect-monitor-1.0.0.jar `. To use with prometheus using [jmx-exporter](https://github.com/prometheus/jmx_exporter) run like this `java -javaagent:../jmx_prometheus_javaagent-0.12.0.jar=8081:kcm.yml -jar build/libs/kafka-connect-monitor-1.0.0.jar`. After that the metrics will be available at http://localhost:8081
 * Run the docker container 
     * run the docker container using this command `docker run -e ALERT_ENABLED=true -e CONNECT_URL=[CONNECT URL] -e SMTP_HOST=[SMTP HOST] -e SMTP_PORT=[SMTP PORT] -e SMTP_TO=[TO ADDRESS] -e SMTP_FROM=[FROM ADDRESS] -e ROOT_URL=http://localhost:8080  -p 8080:8080  rahulbats/kafka-connect-monitor:LATEST_TAG`
 
