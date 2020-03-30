@@ -48,6 +48,7 @@ Send the following environment variables if `ALERT_ENABLED=true`
 
 | Environment Variable | Optional | Description |
 | --- | --- | --- |
+| CONNECT_STATES | Yes | Coma seperated list of states you want to be alerted for. For example PAUSED,FAILED. Default is FAILED.
 | SMTP_HOST | Yes | SMTP host for EMAIL alert|
 | SMTP_PORT | Yes | SMTP port |
 | SMTP_TO | Yes | To email address |
